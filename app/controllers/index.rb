@@ -340,6 +340,7 @@ get '/sa_responses' do
           last_name: r.user.last_name, 
           question_id: r.question_id,
           question_text: r.question.text, 
+          response_id: r.id,
           value: r.value,
           created_at: r.created_at,
           created_at_epoch: r.created_at.to_i}}

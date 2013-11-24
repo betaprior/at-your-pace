@@ -1,34 +1,48 @@
-<div class="container">
-  <a href="/responses">Responses</a>
-<h1> Students </h1>
-<ul>
-  <% @students.each do |student| %>
-  <li> <%=student.first_name %> : 
-    <%= student.email %></li>
-  <% end %>
-</ul>
+<div id="page">
+  <div id = "sideNav">
+    <div id = "studentNav">
+      <h1> Students </h1>
+      <ul>
+        <% @students.each do |student| %>
+        <li> <%=student.first_name %> : 
+          <%= student.email %></li>
+          <% end %>
+        </ul>
 
-<h1> Lessons </h1>
-<ul>
-  <% @lessons.each do |lesson| %>
-  <li> <%=lesson.title %>  
-  <% end %>
-</ul>
+      </div>
+    </div>
+    <div id = "mainContainer">
+      <div id = "courseNav">
 
-<h1> Questions </h1>
-<ul>
-  <% @questions.each do |question| %>
-  <li> <%=question.text %> : 
-    <%= question.type %></li>
-  <% end %>
-</ul>
+        Course 1, Course 2
+      </div>
+      
 
+      <div id = "progressGraph"> 
+        <h1> Lessons </h1>
+        <ul>
+          <% @lessons.each do |lesson| %>
+          <li> <%=lesson.title %>  
+            <% end %>
+          </ul>
 
-<h1> Responses </h1>
-<ul>
-  <% @responses.each do |response| %>
-  <li> <%=response.value %> : 
-    <%= response.created_at %></li>
-  <% end %>
-</ul>
-</div>
+        </div>
+        <div id = "avgerages">
+          <h5>Average Time Per Lesson: </h5><p>n</p><br>
+          <h5>Average Score: </h5><p>n%</p>
+        </div>
+        <div id = "answerFeed">
+          <h5>Short Answer Stream: </h5>
+          
+          <ul>
+            <% @responses.each do |response| %>
+            <li> <%=response.value %> : 
+              <%= response.created_at %></li>
+              <% end %>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+

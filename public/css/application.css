@@ -1,10 +1,129 @@
-.container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+
+
+
+body{
+  font-family: 'Josefin Slab', 'Helvetica', sans-serif;
+  font-size: 12px;
+  width:1000px;
+}
+h5{
+  font-weight: 700;
+  font-size: 16px;
+  display: inline;
+}
+p{
+  font-weight: 400;
+  font-size: 16px;
+  display: inline;
+
+}
+#studentNav{
+  float: left;
+  margin:1%;
+  width: 15%;
+  height:10px;
+  background-color: #ababa9;
 }
 
-th {
-  text-align: left;
+#mainContainer{
+  float: right;
+  margin:1%;
+  width: 80%;
+  height:500px;
+  background-color: #ababa9;
 }
+
+#courseNav{
+  margin-bottom:10px;
+}
+
+#progressGraph{
+  margin-bottom:20px;
+  background-color: #fff1ce;
+  height:20px;
+}
+
+#averages{
+  margin:20px 10px;
+}
+#answerFeed{
+  margin-top:20px;
+  height:20px;
+  background-color: #fff1ce;
+}
+
+#page{
+  margin-left:10px;
+  margin-right:10px;
+  clear:both;
+}
+
+nav{
+ margin-left:10px;
+ margin-right:10px;
+ background-color: #17607d
+}
+
+nav ul{
+
+  background-color: #17607d;
+  margin-left:70%;
+
+}
+
+nav li{
+  display: inline-block;
+  list-style: none;
+  padding:10px;
+  color:#fffff;
+  
+  font-size: 2em;
+}
+
+nav a, nav a:visited{
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#sign-in-div{
+  display:none;
+}
+
+
+
+
+
+#mask {
+  display: none;
+  background: #000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  z-index: 999;
+}
+
+.login-popup {
+  display: none;
+  background: #333;
+  padding: 10px;
+  border: 2px solid #ddd;
+  position: fixed;
+  top: 20px;
+  left: 80%;
+  z-index: 99999;
+  box-shadow: 0px 0px 20px #777;
+  /* CSS3 */
+  -moz-box-shadow: 0px 0px 20px #777;
+  /* Firefox */
+  -webkit-box-shadow: 0px 0px 20px #777;
+  /* Safari, Chrome */
+  border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  
+}
+
