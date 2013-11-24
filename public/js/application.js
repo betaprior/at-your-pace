@@ -12,9 +12,9 @@ function getLessons(data) {
 	// debugger;
 	return _.uniq(
 		_.sortBy(_.map(_.filter(data, function(x) { return x.lesson_id > 0; }), 
-						function(x) { return {"lesson_name": x.lesson_name, 
-											  "lesson_id": x.lesson_id }; } ),
-				 function(x) { return x.lesson_id; }),
+			function(x) { return {"lesson_name": x.lesson_name, 
+			"lesson_id": x.lesson_id }; } ),
+		function(x) { return x.lesson_id; }),
 		true, function(x) { return x.lesson_id; });
 }
 
@@ -29,7 +29,7 @@ function setupLessonData(data) {
 		x.num_students = _.uniq(lesson_data_hash[x.lesson_name], false, function(y) { return y.user_name; }).length;
 		x.lesson_data = lesson_data_hash[x.lesson_name];
 	});
-	debugger;
+	// debugger;
 }
 
 function byLesson(data) {
@@ -61,14 +61,14 @@ function renderResponses(error, data) {
 	console.log("Length of data is ", data.length);
 	console.log("Number of lessons is ", lessonParams.numLessons);
 	var svg = d3.select('.progview-main');
-    var lessonBins = svg.select(".lesson-bin-g").selectAll(".lesson-bin")
-              .data(data)
-              .enter().append("rect")
-              .attr("x", function(d, i) { return (i) * binWidth; })
-              .attr("class", "hour bordered")
-              .attr("width", binWidth)
-              .attr("height", binHeight)
-              .style("fill", function(d, i) { return binColors[i % 2]; });
+	var lessonBins = svg.select(".lesson-bin-g").selectAll(".lesson-bin")
+	.data(data)
+	.enter().append("rect")
+	.attr("x", function(d, i) { return (i) * binWidth; })
+	.attr("class", "hour bordered")
+	.attr("width", binWidth)
+	.attr("height", binHeight)
+	.style("fill", function(d, i) { return binColors[i % 2]; });
 }	
 
 $(document).ready(function() {
@@ -76,5 +76,31 @@ $(document).ready(function() {
 	// d3.json('/responses', function(error, data) {
 	// 	console.log("Length of data is ", data.length);
 	// });
-	d3.json('/responses1', renderResponses);
+d3.json('/responses1', renderResponses);
+
+//ANSWER FEED
+buildAnswerFeed( testJSON );
+
+//SIGN IN 
+
+$('#sign-in').on('click',function(e){
+	e.preventDefault()
+	var loginBox = $('.login-popup')
+	$(loginBox).fadeIn(300);
+
+  // Add the mask to body
+  $('body').append('<div id="mask"></div>');
+  $('#mask').fadeIn(300);
+  })
+
+$('a.close, #mask').on('click', function(e) { 
+	e.preventDefault();
+	$('#mask , .login-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
 });
+
+
+});
+
+

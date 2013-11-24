@@ -1,27 +1,45 @@
-<div class="container">
-  <a href="/responses">Responses</a>
-<h1> Students </h1>
-<ul>
-  <% @students.each do |student| %>
-  <li> <%=student.first_name %> : 
-    <%= student.email %></li>
-  <% end %>
-</ul>
+<div id="page">
+  <div id = "sideNav">
+    <div id = "courseNav">
+      <h5> Courses </h5>
+      <ul>
+        <li> Macro Economics</li>
+        <li> Math 191</li>
 
-<h1> Questions </h1>
-<ul>
-  <% @questions.each do |question| %>
-  <li> <%=question.text %> : 
-    <%= question.type %></li>
-  <% end %>
-</ul>
+      </ul>
+    </div>
+
+    
+    <div id = "studentNav">
+      <h5> Students </h5>
+      <ul>
+        <% @students.each do |student| %>
+        <li><a href='#'> <%=student.first_name %> <%=student.last_name %>  </a></li>
+
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+  <div id = "mainContainer">
+    <div id = "progressGraph"> 
+      <h5> Lessons </h5>
+    </div>
 
 
-<h1> Responses </h1>
-<ul>
-  <% @responses.each do |response| %>
-  <li> <%=response.value %> : 
-    <%= response.created_at %></li>
-  <% end %>
-</ul>
-</div>
+    <div id="answer-feed-labels">        
+      <h5> Answer Feed </h5> 
+      <div>
+        Average Time Per Lesson: <span>n</span>
+      </div>
+      <div>
+        Average Score: <span>n%</span>
+      </div>
+    </div>
+    
+    <div id="answer-feed">
+    </div>
+
+
+  </div> <!-- end page -->
+

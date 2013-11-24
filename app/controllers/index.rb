@@ -2,7 +2,7 @@ require 'json'
 
 testjsonglobal = '[{"response": {"created_at": "2013-11-23T13:05:03",
                "id": 1,
-               "lesson_id": -1,
+               "lesson_id": 1,
                "lesson_name": "",
                "question_id": -1,
                "updated_at": "2013-11-23T16:37:52-08:00",
@@ -320,13 +320,27 @@ get '/' do
   @students=User.where(role: "student")
   @questions = Question.all
   @responses = Response.all
+  @lessons= Lesson.all
+     erb :index
+end
 
-  # if xhr
-  #   content_type :json
+get '/sa_responses' do
 
-  #   return @responses.to_json
-  # # end
-    erb :index
+     responses = Response.includes(:user, :question)
+
+     expanded_reponse = responses.map do |r|
+          {response: {user_id: r.user_id, 
+          first_name: r.user.first_name, 
+          last_name: r.user.last_name, 
+          question_id: r.question_id,
+          question_text: r.question.text, 
+          response_id: r.id,
+          value: r.value,
+          created_at: r.created_at,
+          created_at_epoch: r.created_at.to_i}}
+     end
+
+     p expanded_reponse.to_json
 end
 
 get '/responses' do
