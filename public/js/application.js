@@ -94,7 +94,7 @@ function renderResponses(error, data) {
 	console.log(binColors);
 	console.log("Length of data is ", data.length);
 	console.log("Number of lessons is ", lessonParams.numLessons);
-<<<<<<< HEAD
+
 	// var svg = d3.select('.progview-main');
 	var svg = placeLessonBinSVG(); // currently selects g inside svg
 	var binXFn = function(d, i) { return (i) * binWidth; };
@@ -138,7 +138,7 @@ function renderResponses(error, data) {
 		// figure out the time scale for this bin
 		var maxt = getMaxTime(sd_summary).latest;
 		var mint = getMinTime(sd_summary).earliest;
-		console.log("max time is ", maxt.created_at, "; min time is ", mint.created_at, "; delta is ", maxt.created_at_epoch - mint.created_at_epoch);
+		 console.log("max time is ", maxt.created_at, "; min time is ", mint.created_at, "; delta is ", maxt.created_at_epoch - mint.created_at_epoch);
 		var tscale = d3.scale.linear()
 			.domain([mint.created_at_epoch, maxt.created_at_epoch])
 			.range([0, total_height]);
