@@ -8,6 +8,13 @@
   <% end %>
 </ul>
 
+<h1> Lessons </h1>
+<ul>
+  <% @lessons.each do |lesson| %>
+  <li> <%=lesson.title %>  
+  <% end %>
+</ul>
+
 <h1> Questions </h1>
 <ul>
   <% @questions.each do |question| %>
