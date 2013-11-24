@@ -59,10 +59,25 @@ p{
 
 #progressGraph{
   margin-bottom:20px;
-  background-color: #fff1ce;
-  height:20px;
+  padding-bottom:20px;
+ /* background-color: #fff1ce;*/
+  height:930px;
 }
 
+.progview-container{
+  margin:0;
+  padding:0;
+}
+.progview-container-wrapper{
+  margin-bottom:50px;
+}
+.progview-main{
+  margin:-30px;
+  padding:0;
+}
+.bin-group{
+  border:solid black 1px;
+}
 
 
 
@@ -75,6 +90,10 @@ p{
   margin-right: 10px;
   height: 400px;
   overflow: auto;
+}
+
+#answer-feed-labels{
+  margin-top:10px;
 }
 
 #answer-feed-labels div{
