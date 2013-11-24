@@ -70,7 +70,7 @@ p{
   display: block;
   font-family: Helvetica, sans-serif;
   color: #3b4044;
-  border: 1px solid #ababa9;
+  border: 1px solid 
   padding: 5px;
   margin-right: 10px;
   height: 400px;
@@ -145,12 +145,13 @@ p{
 nav{
  margin-left:10px;
  margin-right:10px;
- background-color: #17607d
+ background-color: #fff1ce;
+ color:#1cbcbc;
 }
 
 nav ul{
 
-  background-color: #17607d;
+  background-color: #fff1ce;
   margin-left:70%;
 
 }
@@ -159,32 +160,31 @@ nav li{
   display: inline-block;
   list-style: none;
   padding:10px;
-  color:#fffff;
-  
+  color:#1cbcbc;
   font-size: 2em;
 }
 
 nav a, nav a:visited{
   text-decoration: none;
-  color: #ffffff;
+  color:#1cbcbc;
 }
 #sign-in-form{
   font-size: 1.5em;
-  background-color: #17607d;
-  color:#ffffff;
+  background-color: #fff1ce;
+   color:#1cbcbc;
 }
 
 
 
 #sign-in-form label{
-  color:#ffffff;
+  color:#1cbcbc;
   width: 80px;
   display:inline-block;
 
 }
 
 #sign-in-form .buttons a{
-  border:1px dotted #ffffff;
+  border:1px dotted #1cbcbc;
   padding:5px;
   width:80px;
   display: inline-block;
@@ -211,7 +211,7 @@ nav a, nav a:visited{
 
 .login-popup {
   display: none;
-  background: #17607d;
+  background: #fff1ce;
   padding: 10px;
   border: 2px solid #ddd;
   position: fixed;
