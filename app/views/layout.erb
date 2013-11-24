@@ -22,11 +22,11 @@
       <% if current_user %>
         <li><a id="sign-out" href="/sessions/<%= current_user.id %>">Sign Out</a></li>
       <% else %>
-        <li><a id="sign-in" data-url="/sessions/new">Sign In</a><%=erb :sign_in, :layout =>false %></li>
+        <li><a id="sign-in" data-url="/sessions/new">Sign In</a></li>
         <li><a href="/users/new">Register</a></li>
       <% end %>
     </ul>
-
+<%=erb :sign_in, :layout =>false %>
   </nav>
 
 

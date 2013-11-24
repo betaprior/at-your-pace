@@ -321,13 +321,7 @@ get '/' do
   @questions = Question.all
   @responses = Response.all
   @lessons= Lesson.all
-
-  # if xhr
-  #   content_type :json
-
-  #   return @responses.to_json
-  # # end
-    erb :index
+     erb :index
 end
 
 get '/sa_responses' do

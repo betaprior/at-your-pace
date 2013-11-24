@@ -82,13 +82,6 @@ $('#sign-in').on('click',function(e){
 	e.preventDefault()
 	var loginBox = $('.login-popup')
 	$(loginBox).fadeIn(300);
-	var popMargTop = ($(loginBox).height() + 24) / 2; 
-	var popMargLeft = ($(loginBox).width() + 24) / 2; 
-
-	$(loginBox).css({ 
-		'margin-top' : -popMargTop,
-		'margin-left' : -popMargLeft
-	});
 
   // Add the mask to body
   $('body').append('<div id="mask"></div>');

@@ -1,48 +1,122 @@
 <div id="page">
   <div id = "sideNav">
+    <div id = "courseNav">
+      <h5> Courses </h5>
+          <ul>
+            <li> Macro Economics</li>
+            <li> Math 191</li>
+
+        </ul>
+      </div>
+
+    
     <div id = "studentNav">
-      <h1> Students </h1>
+      <h5> Students </h5>
       <ul>
         <% @students.each do |student| %>
-        <li> <%=student.first_name %> : 
-          <%= student.email %></li>
+        <li><a href='#'> <%=student.first_name %> <%=student.last_name %>  </a></li>
+
           <% end %>
         </ul>
 
       </div>
     </div>
     <div id = "mainContainer">
-      <div id = "courseNav">
-
-        Course 1, Course 2
-      </div>
-      
-
       <div id = "progressGraph"> 
-        <h1> Lessons </h1>
-        <ul>
-          <% @lessons.each do |lesson| %>
-          <li> <%=lesson.title %>  
-            <% end %>
-          </ul>
+        <h5> Lessons </h5>
+      </div>
 
-        </div>
-        <div id = "avgerages">
-          <h5>Average Time Per Lesson: </h5><p>n</p><br>
-          <h5>Average Score: </h5><p>n%</p>
-        </div>
-        <div id = "answerFeed">
-          <h5>Short Answer Stream: </h5>
-          
-          <ul>
-            <% @responses.each do |response| %>
-            <li> <%=response.value %> : 
-              <%= response.created_at %></li>
-              <% end %>
-            </ul>
 
+      <div id="answer-feed-labels">        
+        <h5> Answer Feed </h5> 
+        <div>
+          Average Time Per Lesson: <span>n</span>
+        </div>
+        <div>
+        Average Score: <span>n%</span>
+      </div>
+    </div>
+    <div id="answerFeed">
+
+      <div id="answer_container">
+        <div class="answer">
+          <div class="submission_info">
+           <span class="submission_time">1:00 PM</span> <span class="submission_name">Ignacio</span>
+         </div>
+         <div class="question_answer_text">
+          <p class="question_text">
+            Explain the relationship between the business cycle and tax revenue / government spending. Why does this present a challenge to policy makers? 
+          </p>
+          <p class="answer_text">
+            The relationship is that during recessions, people have less money so the taxes that the government is able to impose are smaller, however, because people have less money they demand more cervices like health care and pensions from the government, which can make the government dive into depth since the fewer taxes that it collects cannot fulfill the increased welfare needs of the people. Policy makers have to devise solutions for balancing the smaller budget with the increased demand for free services, as well as plan for future shortcomings.
+          </p>
+          <div class="grade_submission">
+            <select id="answer_id">
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="F">F</option>
+            </select>
           </div>
+        </div>
 
+      </div>
+
+    </div>
+
+    <div class="answer">
+      <div>
+        <div class="submission_info">
+          <span class="submission_time">1:00 PM</span> <span class="submission_name">Brooklyn</span>
+        </div>
+        <div class="question_answer_text">
+          <p class="question_text">
+            Explain the relationship between the business cycle and tax revenue / government spending. Why does this present a challenge to policy makers? 
+          </p>
+          <p class="answer_text">
+            The relationship is that during recessions, people have less money so the taxes that the government is able to impose are smaller, however, because people have less money they demand more cervices like health care and pensions from the government, which can make the government dive into depth since the fewer taxes that it collects cannot fulfill the increased welfare needs of the people. Policy makers have to devise solutions for balancing the smaller budget with the increased demand for free services, as well as plan for future shortcomings.
+          </p>
+          <div class="grade_submission">
+            <select id="answer_id">
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="F">F</option>
+            </select>
+          </div>
         </div>
       </div>
+
+    </div>
+
+    <div class="answer">
+      <div>
+        <div class="submission_info">
+          <span class="submission_time">1:00 PM</span> <span class="submission_name">Benny</span>
+        </div>
+        <div class="question_answer_text">
+          <p class="question_text">
+            Explain the relationship between the business cycle and tax revenue / government spending. Why does this present a challenge to policy makers? 
+          </p>
+          <p class="answer_text">
+            The relationship is that during recessions, people have less money so the taxes that the government is able to impose are smaller, however, because people have less money they demand more cervices like health care and pensions from the government, which can make the government dive into depth since the fewer taxes that it collects cannot fulfill the increased welfare needs of the people. Policy makers have to devise solutions for balancing the smaller budget with the increased demand for free services, as well as plan for future shortcomings.
+          </p>
+          <div class="grade_submission">
+            <select id="answer_id">
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="F">F</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div> <!-- end page -->
 
