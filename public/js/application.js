@@ -31,9 +31,9 @@ function getStudents(data) {
 function getLessons(data) {
 	return _.uniq(
 		_.sortBy(_.map(_.filter(data, function(x) { return x.lesson_id > 0; }), 
-						function(x) { return {"lesson_name": x.lesson_name, 
-											  "lesson_id": x.lesson_id }; } ),
-				 function(x) { return x.lesson_id; }),
+			function(x) { return {"lesson_name": x.lesson_name, 
+			"lesson_id": x.lesson_id }; } ),
+		function(x) { return x.lesson_id; }),
 		true, function(x) { return x.lesson_id; });
 	// return _.uniq(
 	// 	_.sortBy(_.map(data,
@@ -55,6 +55,7 @@ function setupLessonData(data) {
 		x.lesson_data = lesson_data_hash[x.lesson_name];
 	});
 	return bin_data;
+
 }
 
 function byLesson(data) {
@@ -93,6 +94,7 @@ function renderResponses(error, data) {
 	console.log(binColors);
 	console.log("Length of data is ", data.length);
 	console.log("Number of lessons is ", lessonParams.numLessons);
+<<<<<<< HEAD
 	// var svg = d3.select('.progview-main');
 	var svg = placeLessonBinSVG(); // currently selects g inside svg
 	var binXFn = function(d, i) { return (i) * binWidth; };
@@ -151,6 +153,7 @@ function renderResponses(error, data) {
 			.attr("width", tagWidth)
 			.attr("height", tagHeight);
 	} // end bin loop
+
 }	
 
 $(document).ready(function() {
@@ -158,5 +161,31 @@ $(document).ready(function() {
 	// d3.json('/responses', function(error, data) {
 	// 	console.log("Length of data is ", data.length);
 	// });
-	d3.json('/responses1', renderResponses);
+d3.json('/responses1', renderResponses);
+
+//ANSWER FEED
+buildAnswerFeed( testJSON );
+
+//SIGN IN 
+
+$('#sign-in').on('click',function(e){
+	e.preventDefault()
+	var loginBox = $('.login-popup')
+	$(loginBox).fadeIn(300);
+
+  // Add the mask to body
+  $('body').append('<div id="mask"></div>');
+  $('#mask').fadeIn(300);
+  })
+
+$('a.close, #mask').on('click', function(e) { 
+	e.preventDefault();
+	$('#mask , .login-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
 });
+
+
+});
+
+

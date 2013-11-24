@@ -7,23 +7,28 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
   <script src="/js/application.js"></script>
+   <script type="text/javascript" src="/js/answer_feed.js"></script> 
+
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,300,600,700' rel='stylesheet' type='text/css'>
+
 
   <title>At Your Pace</title>
 </head>
 <body>
     <nav>
 
-    <div class="brand"><a href="/">At Your Pace</a></div>
+    <div class="brand"><a href="/">At Your Pace</a>
+    </div>
 
     <ul>
       <% if current_user %>
         <li><a id="sign-out" href="/sessions/<%= current_user.id %>">Sign Out</a></li>
       <% else %>
-        <li><a href="/sessions/new">Sign In</a></li>
-        <li><a href="/users/new">Sign Up</a></li>
+        <li><a id="sign-in" data-url="/sessions/new">Sign In</a></li>
+        <li><a href="/users/new">Register</a></li>
       <% end %>
     </ul>
-
+<%=erb :sign_in, :layout =>false %>
   </nav>
 
 
