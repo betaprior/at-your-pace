@@ -64,7 +64,9 @@ p{
 }
 
 
-#answerFeed {
+
+
+#answer-feed {
   display: block;
   font-family: Helvetica, sans-serif;
   color: #3b4044;
@@ -85,9 +87,18 @@ p{
   border: 1px solid #ababa9;
   line-height: 16px;
   padding: 5px;
+ clear: both;
 }
 
-.submission_info {
+.answer-container {
+    display: block;
+}
+
+.answer-footer {
+    clear: both;
+}
+
+.submission-info {
   display: inline-block;
   width: 20%;
   vertical-align: top;
@@ -95,29 +106,31 @@ p{
   color: #444;
 }
 
-.submission_time {
+.submission-time {
   margin-right:10px;
   font-style: italic;
   font-size:10px;
 }
-
-.question_answer_text {
+.submission-name {
+    display: block;
+}
+.question-answer-text {
   width: 75%;
   display: inline-block;
 }
 
-.question_text {
+.question-text {
   font-weight: bold;
   font-size: 10px;
   line-height: 12px;
 }
 
-.answer_text {
+.answer-text {
   font-size: 12px;
 
 }
 
-.grade_submission {
+.grade-submission {
   display: block;
   float: right;
 }

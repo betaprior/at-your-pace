@@ -78,6 +78,11 @@ $(document).ready(function() {
 	// });
 d3.json('/responses1', renderResponses);
 
+//ANSWER FEED
+buildAnswerFeed( testJSON );
+
+//SIGN IN 
+
 $('#sign-in').on('click',function(e){
 	e.preventDefault()
 	var loginBox = $('.login-popup')
