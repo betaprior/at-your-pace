@@ -54,15 +54,34 @@ p{
   color: #000000 ;
 }
 #studentNav a:hover , #studentNav li:hover{
-  background-color: red
+  background-color :#1cbcbc
 }
 
 #progressGraph{
   margin-bottom:20px;
-  background-color: #fff1ce;
-  height:20px;
+  padding:10px;
+  padding-bottom:40px;
+  border:solid 1px black;
+  overflow: auto;
+
+ /* background-color: #fff1ce;*/
+  
 }
 
+.progview-container{
+  margin:0;
+  padding:0;
+}
+.progview-container-wrapper{
+  margin-bottom:50px;
+}
+.progview-main{
+  margin:-30px;
+  padding:0;
+}
+.bin-group{
+  border:solid black 1px;
+}
 
 
 
@@ -70,11 +89,15 @@ p{
   display: block;
   font-family: Helvetica, sans-serif;
   color: #3b4044;
-  border: 1px solid 
+  border: 1px solid ;
   padding: 5px;
   margin-right: 10px;
   height: 400px;
   overflow: auto;
+}
+
+#answer-feed-labels{
+  margin-top:10px;
 }
 
 #answer-feed-labels div{
@@ -152,8 +175,10 @@ nav{
 nav ul{
 
   background-color: #fff1ce;
-  margin-left:70%;
-
+  /*margin-left:70%;*/
+  position:absolute;
+  top:40px;
+  right:40px;
 }
 
 nav li{
@@ -168,6 +193,12 @@ nav a, nav a:visited{
   text-decoration: none;
   color:#1cbcbc;
 }
+
+.brand img{
+  z-index: 2;
+  margin:10px;
+}
+
 #sign-in-form{
   font-size: 1.5em;
   background-color: #fff1ce;
@@ -230,4 +261,9 @@ nav a, nav a:visited{
   -webkit-border-radius: 3px;
   
 }
+
+.form-title{
+  text-align: center
+}
+
 
