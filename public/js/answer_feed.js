@@ -37,7 +37,7 @@ function getDateStr( utcSeconds )
 }
 
 function createAnswerElement ( submissionUtcSeconds, userName, questionText,
-			       answerText, answerId )
+                   answerText, answerId )
 {   
     var $answerElmt = $(answerElmtT).clone();
     var $contDivElmt = $(contDivElmtT).clone();
@@ -52,11 +52,11 @@ function createAnswerElement ( submissionUtcSeconds, userName, questionText,
     var $footerDivElmt = $(footerDivElmtT).clone();
     
     for (var i = 0; i < grades.length; i++ ) {
-	grade = grades[i];
-	var $gradeOptionElmt = $(gradeOptionElmtT).clone();
-	$gradeOptionElmt.attr("value", grade);
-	$gradeOptionElmt.text(grade);
-	$gradeSelectElmt.append($gradeOptionElmt);
+    grade = grades[i];
+    var $gradeOptionElmt = $(gradeOptionElmtT).clone();
+    $gradeOptionElmt.attr("value", grade);
+    $gradeOptionElmt.text(grade);
+    $gradeSelectElmt.append($gradeOptionElmt);
     }
     
     
@@ -67,8 +67,16 @@ function createAnswerElement ( submissionUtcSeconds, userName, questionText,
     $gradeSelectElmt.attr("id", answerId);
     
     $gradeSelectElmt.change( function () {
-	console.log("Grade for response " + answerId + ": " +
-		    this.options[this.selectedIndex].value);
+    console.log("Grade for response " + answerId + ": " +
+            this.options[this.selectedIndex].value);
+    $answer = $(this).closest(".answer");
+    /*
+    if ( ! $answer.hasClass("graded") ) {
+        $answer.addClass("graded");
+    }
+    */
+    $answer.stop();
+    $answer.css("background-color", "#FFEB7A").delay(5000).slideUp();
     });
 
     $gradeSubElmt.append($gradeSelectElmt);
@@ -85,28 +93,65 @@ function createAnswerElement ( submissionUtcSeconds, userName, questionText,
     return $answerElmt.get(0);
 }
 
-function buildAnswerFeed ( jsonData ) {
-    jsonData = jQuery.parseJSON( jsonData );
+function updateAnswerFeed ( responseArray )
+{
+    var domRoot = document.getElementById("answer-feed");
+
+    for (var i = 0; i < responseArray.length; i++) {
+    var userName = ( responseArray[i]['response']['first_name'] + " " + 
+             responseArray[i]['response']['last_name'] );
     
+    var answerElmt = createAnswerElement(
+        responseArray[i]['response']['created_at_epoch'],
+        userName,
+        responseArray[i]['response']['question_text'],
+        responseArray[i]['response']['value'],
+        responseArray[i]['response']['response_id'] );
+
+    $(answerElmt).hide();
+    $(answerElmt).css('background-color', '#7ADAFF');
+    
+    $(domRoot).prepend( answerElmt );
+
+    $(answerElmt).slideToggle().delay(1000).animate(
+        { backgroundColor: 'transparent' });
+    }
+    
+}
+
+function buildAnswerFeed ( responseArray ) {
     var domRoot = document.getElementById("answer-feed");
     
-    for (var i = 0; i < jsonData.length; i++) {
-	var userName = ( jsonData[i]['response']['first_name'] + " " + 
-			 jsonData[i]['response']['last_name'] );
-	
-	var answerElmt = createAnswerElement(
-	    jsonData[i]['response']['created_at_epoch'],
-	    userName,
-	    jsonData[i]['response']['question_text'],
-	    jsonData[i]['response']['value'],
-	    jsonData[i]['response']['response_id'] );
-	domRoot.appendChild( answerElmt );
+    for (var i = 0; i < responseArray.length; i++) {
+    var userName = ( responseArray[i]['response']['first_name'] + " " + 
+             responseArray[i]['response']['last_name'] );
+    
+    var answerElmt = createAnswerElement(
+        responseArray[i]['response']['created_at_epoch'],
+        userName,
+        responseArray[i]['response']['question_text'],
+        responseArray[i]['response']['value'],
+        responseArray[i]['response']['response_id'] );
+    domRoot.appendChild( answerElmt );
     }
 
     
 }
 
-$( document ).ready( function () {
-    //$.getJSON();
-    buildAnswerFeed( testJSON );
-})
+function addElements( responseArray, index )
+{
+    // Between 3 and 6 seconds
+    timeout = 5000 + Math.random() * 5000;
+    
+    setTimeout( function () {
+    if ( index < 0 ) {
+        index = responseArray.length - 1;
+    }
+    
+    updateAnswerFeed( [ responseArray[index] ] );
+    index--;
+    
+    addElements( responseArray, index - 1 );
+    }, timeout);
+}
+

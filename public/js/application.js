@@ -175,7 +175,11 @@ $(document).ready(function() {
 	d3.json('/responses1', renderResponses);
 
 //ANSWER FEED
-buildAnswerFeed( testJSON );
+ responseArray = jQuery.parseJSON( testJSON );
+    
+    buildAnswerFeed( responseArray );
+
+    addElements( responseArray, -1 )
 
 //SIGN IN 
 
