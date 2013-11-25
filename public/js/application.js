@@ -1,5 +1,6 @@
 var binColors = ["#F0F0E0", "#FFFFE0"];
 var tagColors = ["#80D0E0"];
+var tagColorsCorr = ["#90B890", "#FF8800"];
 var rosterColors = ["#F0F0E0", "#FFFFE0"];
 // var binColors = ["#F0F0E0", "#FFF8F0"];
 
@@ -111,7 +112,7 @@ function renderResponses(error, data) {
         .attr("height", binHeight)
         .style("fill", function(d, i) { return binColors[i % 2]; });
 	var getStudentCssClass = function(d, i) { return "student-" + d.user_id; };
-	var total_height = getLessonBinSVGDimensions().height;
+	var total_height = getLessonBinSVGDimensions().height - 100;
 
 	// to get the max and min time, we use the original data event array
 	var getMaxTime = function(summary_data) {
@@ -145,7 +146,7 @@ function renderResponses(error, data) {
 		var tscale = d3.scale.linear()
 			.domain([mint.created_at_epoch, maxt.created_at_epoch])
 			.range([0, total_height]);
-	
+		
 		var studentTranslateFn = function(d, i) { return "translate(0, " + tscale(d.created_at_epoch) + ")"; }; 
 
 		var student_g = bin.selectAll(".student-tag")
@@ -156,16 +157,31 @@ function renderResponses(error, data) {
 			.attr("transform", studentTranslateFn);
 		student_g.append("rect")
 			.attr("class", getStudentCssClass)
-			.style("fill", tagColors[0])
+			.style("fill", function(d) { return (d.correct !== "True") ? tagColorsCorr[0] : tagColorsCorr[1]; })
 			.attr("opacity", 0.5)
 			.attr("width", tagWidth)
 			.attr("height", tagHeight);
-		student_g.append("text").text(function(d) { return d.user_name; });
+		student_g.append("text")
+			.attr("dy", function(d){return 15})
+			.text(function(d) { return d.user_name; });
+		student_g.append("text")
+			.attr("dy", function(d){return 30})
+			.text(function(datum) { return "Question " + getQuestionIndex(d, datum) ; });
+		
 		// debugger;
 	} // end bin loop
 
 }	
 
+function getQuestionIndex(master_data, datum) {
+	var respId = datum.id;
+	var student = datum.user_name;
+	var student_responses = master_data.by_student[student];
+	for (var i = 0; i < student_responses.length; i++)
+		if (student_responses[i].id === respId)
+			return i + 1;
+	return 1;
+}
 
 $(document).ready(function() {
 	this.container = d3.select('.progview-main');
