@@ -29,6 +29,10 @@ body{
     clear: both;
 }
 
+.graded {
+    background-color: #FFEB7A;
+}
+
 .answer-container {
     display: block;
 }
