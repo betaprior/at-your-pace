@@ -166,7 +166,6 @@ function renderResponses(error, data) {
 
 }	
 
-function findIndex(data)
 
 $(document).ready(function() {
 	this.container = d3.select('.progview-main');
