@@ -138,30 +138,42 @@ function renderResponses(error, data) {
 		// figure out the time scale for this bin
 		var maxt = getMaxTime(sd_summary).latest;
 		var mint = getMinTime(sd_summary).earliest;
+		// var questions = _.uniq(_.map(d.lesson_data, function(x) { return parseInt(x.question_id, 10); })).sort(function(a, b) { return a - b; });
+		// questions = _.filter(questions, function(x) { return x >= 0; });
+
 		 console.log("max time is ", maxt.created_at, "; min time is ", mint.created_at, "; delta is ", maxt.created_at_epoch - mint.created_at_epoch);
 		var tscale = d3.scale.linear()
 			.domain([mint.created_at_epoch, maxt.created_at_epoch])
 			.range([0, total_height]);
 	
-		bin.selectAll(".student-tag")
+		var studentTranslateFn = function(d, i) { return "translate(0, " + tscale(d.created_at_epoch) + ")"; }; 
+
+		var student_g = bin.selectAll(".student-tag")
 			.data(d.lesson_data)
 			.enter()
-			.append("rect")
+			.append("g")
+			.attr("class", getStudentCssClass)
+			.attr("transform", studentTranslateFn);
+		student_g.append("rect")
 			.attr("class", getStudentCssClass)
 			.style("fill", tagColors[0])
-			.attr("y", function(datum) { return tscale(datum.created_at_epoch); })
+			.attr("opacity", 0.5)
 			.attr("width", tagWidth)
 			.attr("height", tagHeight);
+		student_g.append("text").text(function(d) { return d.user_name; });
+		// debugger;
 	} // end bin loop
 
 }	
+
+function findIndex(data)
 
 $(document).ready(function() {
 	this.container = d3.select('.progview-main');
 	// d3.json('/responses', function(error, data) {
 	// 	console.log("Length of data is ", data.length);
 	// });
-d3.json('/responses1', renderResponses);
+	d3.json('/responses1', renderResponses);
 
 //ANSWER FEED
 buildAnswerFeed( testJSON );
