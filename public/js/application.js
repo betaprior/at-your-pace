@@ -166,7 +166,8 @@ function renderResponses(error, data) {
 			.text(function(d) { return d.user_name; });
 		student_g.append("text")
 			.attr("dy", function(d){return 30})
-			.text(function(datum) { return "Question " + getQuestionIndex(d, datum) ; });
+			.text(function(datum) { 
+				return datum.lesson_name + " / " + "Question " + getQuestionIndex(d, datum) ; });
 		
 		// debugger;
 	} // end bin loop
