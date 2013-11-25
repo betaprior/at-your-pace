@@ -1,7 +1,5 @@
-<div class="container">
-  <h1>Sign Up</h1>
-
-  <form id="sign-up" method="post" action="/users">
+<div class="login-popup">
+  <form id="sign-up-form" method="post" action="/users">
     <label class="label" for="name">Name</label>
     <input type="text" name="user[name]" placeholder="e.g., joe" >
     <br>
@@ -12,9 +10,10 @@
 
     <label class="label" for="password">Password</label>
     <input type="password" name="user[password]" placeholder="6 or more characters">
-    <br>
-
-    <div class="submit"><input type="submit" value="Sign Up"></div>
+ <div class="buttons">
+    <a class="submit">Submit</a>
+    <a class="close">Close</a>
+  </div>
   </form>
 
 </div>
