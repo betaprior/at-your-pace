@@ -226,6 +226,32 @@ nav a, nav a:visited{
   margin-top: 10px
 }
 
+#sign-up-form{
+  font-size: 1.5em;
+  background-color: #fff1ce;
+   color:#1cbcbc;
+}
+
+
+
+#sign-up-form label{
+  color:#1cbcbc;
+  width: 80px;
+  display:inline-block;
+
+}
+
+#sign-up-form .buttons a{
+  border:1px dotted #1cbcbc;
+  padding:5px;
+  width:80px;
+  display: inline-block;
+}
+#sign-up-form .buttons{
+  width: 200px;
+  margin-left:auto;
+  margin-top: 10px
+}
 
 #mask {
   display: none;

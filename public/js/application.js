@@ -198,7 +198,17 @@ buildAnswerFeed( testJSON );
 
 $('#sign-in').on('click',function(e){
 	e.preventDefault()
-	var loginBox = $('.login-popup')
+	var loginBox = $('.sign-in')
+	$(loginBox).fadeIn(300);
+
+  // Add the mask to bo dy
+  $('body').append('<div id="mask"></div>');
+  $('#mask').fadeIn(300);
+  })
+
+$('#register').on('click',function(e){
+	e.preventDefault()
+	var loginBox = $('.sign-up')
 	$(loginBox).fadeIn(300);
 
   // Add the mask to body
