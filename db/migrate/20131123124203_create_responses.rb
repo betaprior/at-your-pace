@@ -4,7 +4,11 @@ class CreateResponses < ActiveRecord::Migration
       t.text :value
       t.references :user
       t.references :question
-
+      t.boolean :bookmarked
+      t.string :grade
+      t.string :correct
+      t.text :comment
+      
       t.timestamps
     end
   end

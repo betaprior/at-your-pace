@@ -15,6 +15,10 @@ gem 'activerecord'
 
 gem 'rake'
 
+gem 'racksh'
+gem 'tux'
+
+gem 'timecop'
 gem 'shotgun'
 gem 'json'
 gem 'faker'

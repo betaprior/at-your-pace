@@ -116,10 +116,10 @@ function renderResponses(error, data) {
 
 	// to get the max and min time, we use the original data event array
 	var getMaxTime = function(summary_data) {
-		return _.max(summary_data, function(x) { return parseInt(x.latest.created_at_epoch, 10); });
+		return _.max(summary_data, function(x) { return parseInt(x.latest.epoch_time, 10); });
 	};
 	var getMinTime = function(summary_data) {
-		return _.min(summary_data, function(x) { return parseInt(x.earliest.created_at_epoch, 10); });
+		return _.min(summary_data, function(x) { return parseInt(x.earliest.epoch_time, 10); });
 	};
 	
 	for (var i = 0; i < all_lesson_data.length; i++) {
@@ -142,12 +142,12 @@ function renderResponses(error, data) {
 		// var questions = _.uniq(_.map(d.lesson_data, function(x) { return parseInt(x.question_id, 10); })).sort(function(a, b) { return a - b; });
 		// questions = _.filter(questions, function(x) { return x >= 0; });
 
-		 console.log("max time is ", maxt.created_at, "; min time is ", mint.created_at, "; delta is ", maxt.created_at_epoch - mint.created_at_epoch);
+		 console.log("max time is ", maxt.created_at, "; min time is ", mint.created_at, "; delta is ", maxt.epoch_time - mint.epoch_time);
 		var tscale = d3.scale.linear()
-			.domain([mint.created_at_epoch, maxt.created_at_epoch])
+			.domain([mint.epoch_time, maxt.epoch_time])
 			.range([0, total_height]);
 		
-		var studentTranslateFn = function(d, i) { return "translate(0, " + tscale(d.created_at_epoch) + ")"; }; 
+		var studentTranslateFn = function(d, i) { return "translate(0, " + tscale(d.epoch_time) + ")"; }; 
 
 		var student_g = bin.selectAll(".student-tag")
 			.data(d.lesson_data)
@@ -189,7 +189,7 @@ $(document).ready(function() {
 	// d3.json('/responses', function(error, data) {
 	// 	console.log("Length of data is ", data.length);
 	// });
-	d3.json('/responses1', renderResponses);
+	d3.json('/responses', renderResponses);
 
 //ANSWER FEED
  responseArray = jQuery.parseJSON( testJSON );
